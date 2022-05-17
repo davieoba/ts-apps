@@ -1,0 +1,17 @@
+{
+  "name": "sort",
+  "version": "1.0.0",
+  "description": "sort app",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon ./build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "author": "David Bodunrin",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.0",
+    "nodemon": "^2.0.16"
+  }
+}
