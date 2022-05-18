@@ -1,1 +1,1 @@
-console.log('God is great')
+import { Sorter } from "./Sorter";
