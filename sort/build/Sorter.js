@@ -7,17 +7,16 @@ class Sorter {
     }
     sort() {
         const length = this.collection.length;
-        if (Array.isArray(this.collection)) {
-            for (let i = 0; i < length; i++) {
-                for (let j = 0; j < length - i - 1; j++) {
-                    if (this.collection[j] > this.collection[j + 1]) {
-                        const leftHand = this.collection[j];
-                        this.collection[j] = this.collection[j + 1];
-                        this.collection[j + 1] = leftHand;
-                    }
+        for (let i = 0; i < length; i++) {
+            for (let j = 0; j < length - i - 1; j++) {
+                if (this.collection.compare(j, j + 1)) {
+                    this.collection.swap(j, j + 1);
                 }
             }
         }
+        console.log(this.collection);
     }
 }
 exports.Sorter = Sorter;
+// const data = new Sorter(new NumbersCollection([10, 2, -5, 0])).sort()
+// const data = new NumbersCollection(this.collection)
