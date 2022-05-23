@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 
-
-export class CSVFileReader {
-  data: string[][];
+export abstract class CSVFileReader<T> {
+  // data: MatchData[];
+  data: T[]
   filePath: string
 
   constructor(filePath: string) {
@@ -11,14 +11,18 @@ export class CSVFileReader {
     // this.data = [[new Date(), 'dave', 'dave', 1, 1, MatchResult.HomeWin, 'sgae']]
   }
 
-  read(): void {
+  abstract mapRow(el: string[]): T
+
+  public getData(): T[] {
     this.data = fs.readFileSync(this.filePath, {
       encoding: 'utf-8'
     }).split('\n').map((el) => {
       return el.split(',')
-    })
+    }).map(this.mapRow)
 
+    return this.data
   }
+
 }
 
 // const dave = ['da', 'a', 'v', 'e']

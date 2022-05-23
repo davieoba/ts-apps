@@ -31,12 +31,13 @@ class CSVFileReader {
         this.data = [];
         // this.data = [[new Date(), 'dave', 'dave', 1, 1, MatchResult.HomeWin, 'sgae']]
     }
-    read() {
+    getData() {
         this.data = fs.readFileSync(this.filePath, {
             encoding: 'utf-8'
         }).split('\n').map((el) => {
             return el.split(',');
-        });
+        }).map(this.mapRow);
+        return this.data;
     }
 }
 exports.CSVFileReader = CSVFileReader;

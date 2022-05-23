@@ -18,3 +18,4 @@ var CSVFileReader = /** @class */ (function () {
     return CSVFileReader;
 }());
 new CSVFileReader('./football.csv').getData();
+
