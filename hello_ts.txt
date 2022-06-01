@@ -1,0 +1,206 @@
+type DoorState = 'open' | 'closed'
+
+function checkDoorState(state: DoorState) {
+//  console.log(`enum value is : ${state}`);
+ switch (state) {
+ case state as DoorState:
+ console.log(`Door is open`);
+ break;
+ case state as DoorState:
+ console.log(`Door is closed`);
+ break;
+ }
+}
+
+// checkDoorState('open')
+
+function testNullOperands(a: number, b: number | null | undefined) {
+//  let addResult = a + (b ?? 0);
+ let addResult = a + (b ?? 0);
+
+ console.log(addResult)
+
+}
+
+// testNullOperands(1,1)
+
+let globalString!: string;
+
+// setGlobalString("this string is set");
+
+// console.log(`globalString = ${globalString}`);
+function setGlobalString(value: string) {
+ globalString = value;
+}
+
+let u: unknown = "an unknown";
+u = 1;
+let aNumber2: number;
+aNumber2 = u as number
+
+type tupleRest = [number, ...string[][]];
+
+// let tuple:tupleRest = [1, 'dave']
+
+type fn = {
+    callback: (text:string) => void;
+    name:string
+}
+
+type testfn = {
+    (text:string): void;
+}
+
+var myCallback:testfn = function (text:string):void {
+ console.log("myCallback called with " + text);
+}
+
+// myCallback('salt')
+
+function withCallbackArg(message:string, callbackFn: (text:string) =>void) {
+ console.log("withCallback called, message : " + message);
+ callbackFn(message + " from withCallback");
+}
+// withCallbackArg("initial text", myCallback);
+
+let fullnameobj: fn = {
+    name: 'David',
+    callback: (text:string):void => {
+        console.log('this code works', text)
+    }
+}
+
+// fullnameobj.callback('hey man')
+
+interface IdName{
+    id: number;
+    name: string
+}
+
+type propName  = keyof IdName
+
+class Simpleclass{
+    id:number | undefined;
+    print: () => void
+
+    constructor(id: number,){
+        this.id = id
+        this.print = ():void => {
+            console.log(`simple class is called`)
+        }
+    }
+}
+
+const cl = new Simpleclass(1)
+console.log(cl.print())
+
+interface IPrint {
+ print(): void;
+}
+function printClass(a: IPrint) {
+ a.print();
+}
+
+class ClassC {
+ print(): void {
+ console.log(`ClassC.print() called.`)
+ };
+}
+let classC = new ClassC();
+// printClass(classC);
+
+class ClassWithPrivateProperty {
+  #id: number;
+ constructor(id: number) {
+ this.#id = id;
+ }
+}
+let privateAccess = new ClassWithPrivateProperty(10);
+// privateAccess.id = 20;
+
+
+
+interface IBaseStringOrNumber {
+ id: string | number;
+ name:string
+}
+
+interface IDerivedFromBaseNumber extends IBaseStringOrNumber{
+    id: number
+}
+
+let obj2:IDerivedFromBaseNumber = {
+    id: 1,
+    name: 'David Bodunrin'
+}
+
+interface IBase {
+ id: number;
+}
+
+interface IDerivedFromBase extends IBase{
+    name: string
+}
+
+class BaseClass implements IBase {
+ id: number = 0;
+}
+
+class DerivedFromBaseClass
+ extends BaseClass
+ implements IDerivedFromBase
+{
+ name: string = "nameString";
+}
+
+
+class BaseClassWithFn {
+    name: string
+    constructor(public id:number){
+        this.name = 'David Bodunrin'
+    }
+
+
+    print(text: string) {
+        console.log(`BaseClassWithFn.print() : ${text}`)
+    }
+}
+
+class DerivedClassFnOverride extends BaseClassWithFn {
+    constructor(){
+        super(1)
+        super.print('test')
+    }
+    print(text: string) {
+        console.log(`DerivedClassFnOverride.print(${text})`);
+    }
+
+    sage(){
+        'dave'.this.print()
+    }
+}
+
+// const newObj = new DerivedClassFnOverride()
+
+// console.log(newObj.id)
+
+class BaseInterfaceClass {
+    id: number = 0;
+    print() {
+        console.log(`this.id = ${this.id}`);
+    }
+}
+
+// id, print(), setId
+interface IBaseInterfaceClassExt extends BaseInterfaceClass {
+    setId(id: number): void;
+}
+
+
+class ImplementsExt extends BaseInterfaceClass implements IBaseInterfaceClassExt {
+    setId(id: number): void {
+        this.id = id;
+    }
+}
+
+const obj3 = new ImplementsExt().

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.btn {
+  @apply mt-10 block bg-black text-yellow-200 px-8 py-3
+}
+
+/* .dave-input:focus-within {
+  border: 2px solid red;
+} */
+
+
+/* .MuiOutlinedInput-notchedOutline {
+  border: 2px solid orange;
+} */

@@ -3,6 +3,8 @@ interface UserProps {
   age?: number
 }
 
+type fn = () => {}
+
 export class User {
   data: UserProps
   constructor(data: UserProps) {
@@ -16,4 +18,6 @@ export class User {
   set(update: UserProps): void {
     Object.assign(this.data, update)
   }
+
+  on(eventName: string, callback: fn) { }
 }

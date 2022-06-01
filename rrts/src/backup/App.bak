@@ -1,0 +1,46 @@
+import { useState } from "react"
+
+interface AppProps {
+  color?: string
+}
+
+interface CounterState {
+  count: number
+}
+
+
+export const App = (props: AppProps): JSX.Element => {
+  const [counter, setCounter] = useState<CounterState>({ count: 0 })
+
+  const handleIncrement = () => {
+    setCounter((prev) => {
+      return {
+        ...prev,
+        count: prev.count + 1
+      }
+    })
+
+  }
+
+  const handleDecrement = () => {
+    setCounter((prev) => {
+      console.log(prev)
+      return {
+        ...prev,
+        count: prev.count - 1
+      }
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleIncrement}>
+        +
+      </button>
+      <div>{counter.count}</div>
+      <button onClick={handleDecrement}>
+        -
+      </button>
+    </div>
+  )
+}
