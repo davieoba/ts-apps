@@ -1,13 +1,25 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Sidebar from "./components/Sidebar/Sidebar"
 import Feed from './components/Feed/Feed'
 import Rightbar from "./components/RightBar/RightBar"
 import Navbar from "./components/Navbar/Navbar"
-import Grid from './components/Book/Grid/Grid'
+import { MuiGrid } from './components/Book/Grid/Grid'
+import { MuiAppbar } from './components/Book/AppBar/Appbar'
 import { MuiTextField } from "./components/TextField"
+import { MuiDrawer } from './components/Book/Drawer/Drawer'
+import { Form } from './components/Form/Form'
 
 
 export const App = (): JSX.Element => {
+
+
+  // const getData = (data: boolean): boolean => {
+  //   drawerData = data
+  //   return data
+  // }
+
+  // console.log(getData)
+
 
   return (
     <>
@@ -25,6 +37,14 @@ export const App = (): JSX.Element => {
           <Rightbar />
         </div>
       </div> */}
+      {/* <MuiAppbar getData={(id: boolean) => { console.log(id) }} /> */}
+      {/* <MuiGrid /> */}
+
+      <MuiGrid>
+        <MuiDrawer variant="temporary" />
+      </MuiGrid>
+
+      <Form />
     </>
 
   )
